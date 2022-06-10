@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>whoami?</title>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,500;0,700;0,800;1,200;1,300;1,500;1,700;1,800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+	<div id="splash">
+	  <div id="splash-title" class="section black">
+	    <h1>Two Truths and a Lie</h1>
+	  </div>
+
+	  <div id="splash-list" class="section white">
+	    <ol>
+	      <li>I grew up with a schih tzu <span class="password-highlight">p</span>uppy named Sh<span class="password-highlight">a</span>rtzie.</li>
+	      <li>One of the only thing<span class="password-highlight">s</span> I dreamed of doing...job-wi<span class="password-highlight">s</span>e...<span class="password-highlight">w</span>hen I was young was becoming a past<span class="password-highlight">o</span>r.</li>
+	      <li>I had an uncanny sense of style when I was a teenage<span class="password-highlight">r</span>. Where <span class="password-highlight">d</span>id it go?</li>
+	    </ol>
+	  </div>
+
+	  <div id="splash-explanation" class="section accent">
+	    <p>Hey! I'm Shaunalynn. You probably know this game. Two of these statements are true about me, and one is a lie. You'll have to crack the code on this page and find my password. This password will get you to a secret page that will reveal the lie.</p>
+	  </div>
+	</div>
+
+	<div id="secret" class="invisible">
+	  <div id="close" class="pointer"></div>
+	  <div id="mosaic">
+	  	<div id="secret-img-1" class="mosaic-img"></div>
+	  	<div id="secret-img-2" class="mosaic-img"></div>
+	  	<div id="secret-img-3" class="mosaic-img"></div>
+	  	<div id="secret-img-4" class="mosaic-img"></div>	  	
+	  </div>
+	</div>
+
+	<div id="sidebar">
+		<div id="lt-caret" class="sidebarButt pointer"></div>
+	  	<div id="headshot"></div>
+	    <h1 id="name" class="black">Shaunalynn Duffy</h1>
+	    <p id="bio">loves learning, teaching, running, reading, their stepkids, nephews, brass and banjo music. </p>
+	    <ul id="links">
+		    <li><a href="http://shaunalynn.org">Website</a></li>
+		    <li><a href="http://twitter.com/shduff">Twitter</a></li>
+		    <li><a href="http://github.com/shduff">Github</a></li>
+	        <li><a href="https://www.linkedin.com/in/shaunalynn/">LinkedIn</a></li>
+		    <li><a href="#" id="passButt" class="pointer">Password</a></li>
+	    </ul>
+	    <p id="desc">You can learn more about me by checking out any of the links below. The "Password" link requires a password (duh), which you can work out by decoding the content on this page. Good luck!</p>
+	  	<div id="rt-caret" class="sidebarButt pointer"></div>
+	</div>
+
+	<style>
+		body {
+		  margin: 0;
+		  font-family: "Plus Jakarta Sans", sans-serif;
+		  --accent-color: blue;
+		  --off-black: black;
+		  --off-white: white;
+		}
+		.invisible {
+		  visibility: hidden;
+		}
+		.black {
+		  background-color: var(--off-black) !important;
+		  color: var(--off-white) !important;
+		}
+		.white {
+		  background-color: var(--off-white);
+		  color: var(--off-black);
+		}
+		.accent {
+			background-color: var(--accent-color);
+			color: var(--off-white);
+		}
+		.password-highlight {
+			color:var(--accent-color);
+		}
+		.pointer {
+		  cursor: pointer;
+		}
+		.closed {
+			left: 90% !important;
+		}
+		#splash {
+		  min-height: 100vh;
+		  min-width: 100vw;
+		  top: 0;
+		  padding: 0;
+		  display: grid;
+		  grid-template-areas:
+		    "title title"
+		    "list explanation";
+		}
+		#splash #splash-title {
+		  grid-area: title;
+		}
+		#splash #splash-list {
+		  grid-area: list;
+		}
+		#splash #splash-explanation {
+		  grid-area: explanation;
+		}
+		#splash .section {
+		  padding: 2rem 25% 2rem 4rem;
+		  font-size: 1.5rem;
+		  border: solid 3px var(--off-black);
+		}
+		#splash h1 {
+		  margin: 0;
+		  font-size: 10rem;
+		  color: var(--accent-color);
+		}
+		#secret {
+		  position: fixed;
+		  top: 0;
+		  left: 0;
+		  height: 100%;
+		  width: 100%;
+		  z-index: 1;
+		}
+		#secret #close {
+		  position: fixed;
+		  top: 10px;
+		  right: 10px;
+		  height: 50px;
+		  width: 50px;
+		  background-size: contain;
+		  background-image: url(./close-button.png);
+		  filter: invert(100%);
+		}
+		#secret #mosaic {
+			height: 100%;
+			width: 100%;
+			max-width: 1440px;
+			max-height: 1000px;
+			margin: auto;
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows: 1fr 1fr;
+			gap: 1rem;
+			background-color: white;
+		}
+		#secret #mosaic .mosaic-img {
+			background-size: cover;
+			transition: background-image 1s;
+		}
+		#secret #mosaic #secret-img-1 {
+			background-image: url(./1b.png);
+			background-color: red;
+		}
+		#secret #mosaic #secret-img-1:hover {
+			background-image: url(./1.jpeg);
+		}
+		#secret #mosaic #secret-img-2 {
+			background-image: url(./2b.png);
+			background-color: blue;
+		}
+		#secret #mosaic #secret-img-2:hover {
+			background-image: url(./2.jpeg);
+		}
+		#secret #mosaic #secret-img-3 {
+			background-image: url(./3b.png);
+			background-color: green;
+		}
+		#secret #mosaic #secret-img-3:hover {
+			background-image: url(./3.jpeg);
+		}
+		#secret #mosaic #secret-img-4 {
+			background-image: url(./4b.png);
+			background-color: yellow;
+		}
+		#secret #mosaic #secret-img-4:hover {
+			background-image: url(./4.jpeg);
+		}
+		#sidebar {
+		  background-color: var(--off-black);
+		  border: solid 6px var(--off-black);
+		  position: fixed;
+		  display: grid;
+		  grid-template-areas:	  
+		  	"lt-caret headshot name rt-caret"
+		  	"lt-caret bio bio rt-caret"
+		  	"lt-caret links links rt-caret"
+		  	"lt-caret desc desc rt-caret";
+		  grid-template-columns: 1fr 2fr 6fr 1fr;
+		  grid-template-rows: 4fr 2fr 1fr 2fr;
+		  gap: 6px;
+		  top: 5%;
+		  left: 2%;
+		  height: 90%;
+		  width: 96%;
+		  transition: 1s;
+		  font-size: 1.5rem;
+		  align-items: center;
+		}
+		#sidebar > * {
+			background-color: var(--off-white);
+			height: 100%;
+		  	background-size: contain;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		#sidebar .sidebarButt {
+		  	background-repeat: no-repeat;
+		  	background-position: center;
+		}
+		#sidebar .sidebarButt#lt-caret {
+			grid-area: lt-caret;
+			background-image: url(./lt-caret.png);
+
+		}
+		#sidebar .sidebarButt#rt-caret {
+			grid-area: rt-caret;
+			background-image: url(./rt-caret.png);
+		}
+		#sidebar #name {
+			grid-area: name;
+			font-size: 6rem;
+			margin: 0;
+			padding-left: 14px;
+		}
+		#sidebar #headshot {
+			grid-area: headshot;
+		  	background-image: url(https://d33wubrfki0l68.cloudfront.net/9bd4c179f7675395d3227e4c1fc9cc167e7d7cf1/bdd6b/assets/portraits/shaunalynn-duffy.png);
+		  	background-size: cover;
+		  	height: 100%;
+		}
+		#sidebar #bio {
+			grid-area: bio;
+		}
+		#sidebar #links {
+			grid-area: links;
+		  	list-style: none;
+			display: flex;
+		  	padding: 0;
+
+		  	display: grid;
+		  	grid-template-columns: repeat(5, 1fr);
+		  	justify-content: space-around;
+		  	align-items: center;
+		  	background-color: var(--off-black);
+		  	gap: 6px;
+		}
+		#sidebar #links li {
+			background-color: var(--off-white);
+			height: 100%;
+			width: 100%;
+
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		#sidebar #links li a {
+		  	color: var(--off-black);
+		}
+		#sidebar #desc {
+			grid-area: desc;
+		}
+	</style>
+
+	<script>
+		// Code for making the sidebar and modal work
+		let password;
+		let secretModal = document.getElementById("secret");
+		let sidebar = document.getElementById("sidebar");
+
+		document.getElementById("lt-caret").addEventListener("click", function () {
+		  sidebar.classList.toggle("closed");
+		});
+		document.getElementById("rt-caret").addEventListener("click", function () {
+		  sidebar.classList.toggle("closed");
+		});
+
+		document.getElementById("close").addEventListener("click", function () {
+		  secretModal.classList.toggle("invisible");
+		});
+
+		document.getElementById("passButt").addEventListener("click", function () {
+		  password = prompt("What is the password?");
+		  if (password == "password") {
+		  	sidebar.classList.toggle("closed")
+		    secretModal.classList.toggle("invisible");
+		  }
+		});
+	</script>
+</body>
+</html>
