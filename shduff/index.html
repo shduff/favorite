@@ -11,6 +11,7 @@
             body {
                 /*--header-height: 1.5rem;*/
                 /*padding-top: var(--header-height);*/
+                --gap: 16px;
                 margin-top: 0;
                 text-align: center;
                 font-family: "Be Vietnam Pro", sans-serif;
@@ -62,6 +63,8 @@
             p.pageDescription {
                 padding-bottom: var(--gap);
                 font-weight: 100;
+                width: 50%;
+                margin: auto;
             }
             p.pageDescription a {
                 font-weight: 500;
@@ -96,13 +99,20 @@
         </div> -->
         <div id="myInternet">
             <h1>My Favorite Internet</h1>
-            <p class="pageDescription">Think you know the password? <a href="#" id="passButt">Try it.</a></p>
+            <p class="pageDescription">
+                This is some of my favorite stuff on the Internet. Things that move me, make me belly laugh, and are just so much fun. Feel free to poke around—or to contribute one of your favorite pieces of the Internet. Your contribution is the password that will get you to my secret page.
+            </p> 
+            
+            <p class="pageDescription">
+                Think you know the password? <a href="#" id="passButt">Try it.</a>
+            </p>
             <ul id="myLinks" class="favLinks">
             </ul>
         </div>
 
         <div id="yrInternet" class="invisible">
             <h1>Yr Favorite Internet</h1>
+            <p class="pageDescription">This page is a collection of your favorite things from the Internet—or at least the favorite things of other folks who have visited this page. Take a look around, and don't worry if you don't see your link yet. I'm moderating submissions. It will show up soon!</p>
             <p class="pageDescription">Return to my favorite Internet? <a href="#" id="return">Click here.</a></p>
             <ul id="yrLinks" class="favLinks">
             </ul>
@@ -217,10 +227,6 @@
             // console.log(document.getElementById(targetDivID));
         }
 
-        function validateLink(link) {
-
-        }
-
         // fieldDataDict should be of the form {fieldID: fieldValue, ...}
         async function updateAirtableField(fieldDataDict, tableID) {
             return new Promise(function (resolve, reject) {
@@ -317,7 +323,7 @@
         let myInternet = document.getElementById("myInternet");
 
         document.getElementById("passButt").addEventListener("click", function () {
-          password = prompt("What is the password?");
+          password = prompt("What is the password? (Hint: Did you check that your URL is valid?)");
           if (isValidHttpUrl(password)) {
             yrInternet.classList.toggle("invisible");
             myInternet.classList.toggle("invisible");

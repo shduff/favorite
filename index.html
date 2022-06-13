@@ -1,334 +1,194 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100;500&display=swap" rel="stylesheet">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
 
-        <script src="airtable.browser.js"></script>
-        <style>
-            
-            body {
-                /*--header-height: 1.5rem;*/
-                /*padding-top: var(--header-height);*/
-                margin-top: 0;
-                text-align: center;
-                font-family: "Be Vietnam Pro", sans-serif;
-                font-weight: 500;
-            }
-            p.linkDescription {
-                padding: 0;
-            }         
-            h3.linkTitle {
-                margin: 0 0 calc(var(--gap) / 2) 0;
-            }
-            a {
-                color: black;
-                text-decoration: none;
-            }
-            ul, li {
-                padding: 0;
-                margin: 0;
-            }
-            ul {
-                list-style-type: none;
-                --gap: 16px;
-                column-count: 3;
-                column-gap: var(--gap);
-                padding: var(--gap);
-            }
-            ul li {
-                break-inside: avoid;
-                margin-bottom: calc(var(--gap) / 2);
-            }
-            ul li img {
-                /*position: relative;
-                z-index: 1;*/
-                display: block;
-                width: 100%;
-                border: solid 1px black;
-                border-radius: 3px;
-
-            }
-            h3.linkTitle {
-                margin: 0;
-                padding-top: calc(var(--gap) / 2);
-            }
-            p.linkDescription {
-                margin: 0;
-                padding-bottom: var(--gap);
-                font-weight: 100;
-            }
-            p.pageDescription {
-                padding-bottom: var(--gap);
-                font-weight: 100;
-            }
-            p.pageDescription a {
-                font-weight: 500;
-            }
-            /*#ourInternet {
-                position: fixed;
-                height: var(--header-height);
-                width: 100%;
-            }*/
-            #myInternet {
-                top: calc(var(--header-height) * 3);
-                position: relative;
-                z-index: 1;
-                background-color: cream;
-            }
-            #yrInternet {
-                background-color: mintcream;
-                position: absolute;
-                z-index: 2;
-                top: 0;
-                width: 100vw;
-                min-height: 100%;
-            }
-            .invisible {
-                display: none;
-            }
-        </style>
-    </head>
-    <body>
-        <!-- <div id="ourInternet">
-            <h1>Our Favorite Internet</h1>
-        </div> -->
-        <div id="myInternet">
-            <h1>My Favorite Internet</h1>
-            <p class="pageDescription">Think you know the password? <a href="#" id="passButt">Try it.</a></p>
-            <ul id="myLinks" class="favLinks">
-            </ul>
-        </div>
-
-        <div id="yrInternet" class="invisible">
-            <h1>Yr Favorite Internet</h1>
-            <p class="pageDescription">Return to my favorite Internet? <a href="#" id="return">Click here.</a></p>
-            <ul id="yrLinks" class="favLinks">
-            </ul>
-        </div>
-    </body>
-
-
-    <script>
-        let Airtable = require('airtable');
-        let AirtableApiKey = "keycuL2P2p7WPUAZz";
-        let baseID = "appdqtEcYhWR1ZSnT";
-        let myTableID = "tblUnszMTGWgp7LpO";
-        let yrTableID = "tblxTmgXTCZKmUy5A";
-        let base = new Airtable({ apiKey: AirtableApiKey }).base( baseID );
-
-        let PeekalinkApiKeys = [
-            "cdde613d-47bc-442f-a945-4c78f919c2c1",
-            "c9172136-add6-43e8-aa8f-58974dcce0af",
-            "13241ee2-0b94-453c-bc8f-4a14005c637b"
-        ];
-        let defaultKey = PeekalinkApiKeys[2];
-
-        let backupImgLinks = [
-            "https://westballantyneanimalhospital.com/wp-content/uploads/2021/03/kitten-care.jpg",
-            "https://images.theconversation.com/files/443350/original/file-20220131-15-1ndq1m6.jpg",
-            "https://ichef.bbci.co.uk/news/976/cpsprodpb/17638/production/_124800859_gettyimages-817514614.jpg",
-            "https://www.cesarsway.com/wp-content/uploads/2019/10/AdobeStock_190562703-768x535.jpeg"
-        ];
-        let myLinks = [
-            "https://html9responsiveboilerstrapjs.com/",
-            "https://www.youtube.com/watch?v=pwnefUaKCbc",
-            "https://vimeo.com/218042283",
-            "https://www.newyorker.com/magazine/2019/05/27/losing-religion-and-finding-ecstasy-in-houston",
-            "https://www.schoolprison.com/",
-            "https://twitter.com/martynmcl/status/1241660113422712832",
-            "https://www.newyorker.com/magazine/2006/10/02/the-birthing",
-            "https://www.youtube.com/playlist?list=PL5k0MrQ2eB3nXyBwY1rpxJCC1XXbr3BI6",
-            "https://www.youtube.com/watch?v=Dk4okMGiGic",
-            "https://www.mikaelowunna.com/infinite-essence",
-            "https://wwwwwwwwwwwwwwwwwwwwww.bitnik.org/r/",
-            "https://youtu.be/2hJzgLOSNrM",
-        ];
-
-        // does not check for existing links, should be run on empty airtable and/or to add only additional content to currently populated airtable
-        async function populateMyLinks(peekalinkApiKey=defaultKey) {
-            myLinks.forEach((link) => addLink(peekalinkApiKey, link, myTableID, "Show"))
+	<style>
+		body {
+			--border-radius: 5px;
+			--gap: 16px;
+            font-size: 17px;
+            font-family: sans-serif;
+		}
+		body * {
+			box-sizing: border-box;
+		}
+		h1 {
+			text-align: center;
+		}
+		#panel-container {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+		}
+		.panel {
+			position: relative;
+			height: 80vh;
+			width: 15vw;
+			border-radius: var(--border-radius);
+			border: solid;
+			color: white;
+			text-decoration: none;
+			/*text-align: justify;*/
+		}
+		.panel:not(:last-child) {
+			margin-right: var(--gap);
+		}
+		.panel img {
+			object-fit: cover;
+			left: 0;
+		    top: 0;
+		    width: 100%;
+		    height: 100%;
+		    filter: grayscale(100%) contrast(150%) opacity(75%);
+			border-radius: var(--border-radius);
+		}
+		#aresnick {
+			background-color: purple;
+		}
+		#bakhtiar {
+			background-color: blue;
+		}
+		#lea {
+			background-color: green;
+		}
+		#shane {
+			background-color: yellow;
+		}
+		#shduff {
+			background-color: orange;
+		}
+		.info {
+			position: absolute;
+			top: 0;
+			left: 0;
+			padding: var(--gap);
+			height: 100%;
+			display: none;
+			overflow: hidden;
+			color: white;
+			transition: all 1s ease;		
+			border-radius: var(--border-radius);	
+		}
+        .info h2 {
+            font-size:2rem;
+            margin-bottom: 0;
         }
-
-        function getLinks(tableID) {
-            let linkList = [];
-
-            return new Promise(function (resolve, reject) {
-
-                base( tableID ).select({
-                    view: 'Grid view'
-                }).firstPage(
-                function(err, records) {
-                    if (err) { console.log(err); reject(err); }
-                    records.forEach(function(record) {
-                        if ( record.get('Status') == 'Show' ) {
-                            // console.log(record.get('Link'));
-                            linkList.push({
-                                "Link": record.get("Link"),
-                                "Title": record.get("Title"),
-                                "Description": record.get("Description"),
-                                "Image": record.get("Image"),
-                            });
-                        }
-                    });
-                    resolve(linkList);
-                });
-            });
-        };
-
-        function getRandomLi(list) {
-            let index = Math.floor(Math.random()*list.length);
-            return list[index]
+        .info a {
+            color: white;
         }
+		ul {
+			list-style: none;
+			padding: 0;
+			display: flex;
+			justify-content: start;
+		}
+		ul li:not(:last-child) {
+			padding-right: var(--gap);
+		}
+		ul a {
+			text-decoration: none;
+            font-size: 1.5rem;
+		}
+		.visible {
+			display: block;
+			background-color: rgba(0,0,0,0.75);
+			transition: all 1s ease;
+			border-radius: var(--border-radius);
+		}
+	</style>
+</head>
+<body>
+	<h1>Secret Contributors</h1>
+	<div id="panel-container">
+		
+		<div class="panel" id="aresnick">
+			<img src="ar.jpeg" />	
+			<div class="info">
+				<h2>Alec Resnick</h2>
+				<p>better known as Nardwuar, or Nardwuar the Human Serviette, is a Canadian interviewer and musician from Vancouver, British Columbia. He is the lead singer and keyboardist for <a href="https://en.wikipedia.org/wiki/The_Evaporators">The Evaporators.</a></p>
+				<ul>
+					<li><a href="http://twitter.com">🐦</a></li>
+					<li><a href="http://linkedin.com">🧑‍💼</a></li>
+					<li><a href="/shduff">🥚</a></li>
+				</ul>
+			</div>
+		</div>
+		
+		<div class="panel" id="bakhtiar">
+			<img src="bm.jpeg" />
+			<div class="info">
+				<h2>Bakhtiar Mikhak</h2>
+				<p>better known as Nardwuar, or Nardwuar the Human Serviette, is a Canadian interviewer and musician from Vancouver, British Columbia. He is the lead singer and keyboardist for <a href="https://en.wikipedia.org/wiki/The_Evaporators">The Evaporators.</a></p>
+				<ul>
+					<li><a href="http://twitter.com">🐦</a></li>
+					<li><a href="http://linkedin.com">🧑‍💼</a></li>
+					<li><a href="/shduff">🥚</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="panel" id="lea">
+			<img src="ld.jpeg" />
+			<div class="info">
+				<h2>Lea Degen</h2>
+				<p>better known as Nardwuar, or Nardwuar the Human Serviette, is a Canadian interviewer and musician from Vancouver, British Columbia. He is the lead singer and keyboardist for The Evaporators.</p>
+				<ul>
+					<li><a href="http://twitter.com">🐦</a></li>
+					<li><a href="http://linkedin.com">🧑‍💼</a></li>
+					<li><a href="/shduff">🥚</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="panel" id="shane">
+			<img src="sd.jpeg" />
+			<div class="info">
+				<h2>Shane Dabor</h2>
+				<p>better known as Nardwuar, or Nardwuar the Human Serviette, is a Canadian interviewer and musician from Vancouver, British Columbia. He is the lead singer and keyboardist for <a href="https://en.wikipedia.org/wiki/The_Evaporators">The Evaporators.</a></p>
+				<ul>
+					<li><a href="http://twitter.com">🐦</a></li>
+					<li><a href="http://linkedin.com">🧑‍💼</a></li>
+					<li><a href="/shduff">🥚</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="panel" id="shduff">
+			<img src="smd.jpeg" />
+			<div class="info">
+				<h2>Shaunalynn Duffy</h2>
+				<p>better known as Nardwuar, or Nardwuar the Human Serviette, is a Canadian interviewer and musician from Vancouver, British Columbia. He is the lead singer and keyboardist for <a href="https://en.wikipedia.org/wiki/The_Evaporators">The Evaporators.</a></p>
+				<ul>
+					<li><a href="http://twitter.com">🐦</a></li>
+					<li><a href="http://linkedin.com">🧑‍💼</a></li>
+					<li><a href="/shduff">🥚</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
 
-        function displayLinks(linkObjs, targetDivID) {
-            let linkLis = [];
-            linkObjs.forEach(function(linkObj) {
-                let linkLi = document.createElement("li");
-                let linkA = document.createElement("a");
-                linkA.setAttribute("href",linkObj.Link);
-                linkA.setAttribute("class","myLink");
-                let imgLink = linkObj.Image ? linkObj.Image : getRandomLi(backupImgLinks);
-                let img = document.createElement("img");
-                img.setAttribute("src",imgLink);
-                linkA.append(img);
+	<script>
+		let panels = Array.prototype.slice.call(document.getElementsByClassName("panel"));
+		console.log(panels);
 
-                if (linkObj.Title) {
-                    let linkTitle = document.createElement("h3");
-                    linkTitle.setAttribute("class","linkTitle");
-                    linkTitle.append(linkObj.Title);
-                    linkA.append(linkTitle);
-                };
-                if (linkObj.Description) {
-                    let linkDescription = document.createElement("p");
-                    linkDescription.setAttribute("class","linkDescription");
-                    linkDescription.append(linkObj.Description);
-                    linkA.append(linkDescription);
-                };
+		panels.forEach((panel) => {
+			let infoDiv = Array.prototype.slice.call(panel.getElementsByClassName("info"))[0];
+			// console.log(infoDiv);
 
-                linkLi.append(linkA);
-                linkLis.push(linkLi);
-            });
-
-            linkLis.forEach(function(li) {
-                document.getElementById(targetDivID).append(li);
-            });
-            // console.log(document.getElementById(targetDivID));
-        }
-
-        function validateLink(link) {
-
-        }
-
-        // fieldDataDict should be of the form {fieldID: fieldValue, ...}
-        async function updateAirtableField(fieldDataDict, tableID) {
-            return new Promise(function (resolve, reject) {
-                let fieldData = fieldDataDict;
-                base( tableID ).create(fieldData, function(err, record) {
-                    if (err) { console.log(err); reject(err); }
-                });
-                resolve(tableID)
+			panel.addEventListener("mouseover", function() {
+				infoDiv.classList.toggle("visible");
+				// console.log("mouseenter");
+			})
+			panel.addEventListener("mouseout", function() {
+				infoDiv.classList.toggle("visible");
+				// console.log("mouseout");
+			})
+            panel.addEventListener("click", function() {
+                infoDiv.classList.toggle("visible");
+                // console.log("click");
             })
-        }
 
-        function getLinkPreviewInfo(peekalinkApiKey=defaultKey, link) {
-
-            return new Promise(function (resolve, reject) {
-                fetch("https://api.peekalink.io/", {
-                    method: 'POST',
-                    headers : {
-                        'Content-Type': 'application/json',
-                        "X-API-Key": peekalinkApiKey,
-                    },
-                    body: JSON.stringify({link: link})
-                })
-                .then(response => {
-                    console.log("Received response", response)
-                    return response.json()
-                })
-                .then(data => {
-                    console.log("Received data", data)
-                    return resolve(data)
-                })
-            })
-        }
-
-        async function addLink(
-            peekalinkApiKey, 
-            link,
-            tableID,
-            fieldShowStatus="Show") {
-
-            let previewObj = await getLinkPreviewInfo(peekalinkApiKey, link);
-
-            return new Promise(function (resolve, reject) {
-                let url = previewObj.url ? previewObj.url : link;
-                let title = previewObj.title ? previewObj.title : "";
-                let description = previewObj.description ? previewObj.description : "";
-                let image = previewObj.image ? previewObj.image.url : (
-                    previewObj.icon ? previewObj.icon.url : getRandomLi(backupImgLinks)
-                    ) ;
-                let status = fieldShowStatus;
-
-                let previewData = {
-                    Link: url,
-                    Title: title,
-                    Description: description,
-                    Image: image,
-                    Status: status,
-                }
-
-                updateAirtableField(previewData, tableID);
-                resolve(tableID);
-            })
-        } 
-        
-        function loadMyInternet() {
-            getLinks(myTableID)
-                .then( (links) => {
-                    displayLinks(links, "myLinks");
-                })  
-        }
-
-        function loadYrInternet() {
-            getLinks(yrTableID)
-                .then( (links) => { 
-                    displayLinks(links, "yrLinks")
-            })
-        }
-
-        loadMyInternet();
-        loadYrInternet(); // TK uncomment this when done with demo
-
-        function isValidHttpUrl(string) {
-          let url;
-          
-          try {
-            url = new URL(string);
-          } catch (_) {
-            return false;  
-          }
-
-          return url.protocol === "http:" || url.protocol === "https:";
-        }
-
-        let yrInternet = document.getElementById("yrInternet");
-        let myInternet = document.getElementById("myInternet");
-
-        document.getElementById("passButt").addEventListener("click", function () {
-          password = prompt("What is the password?");
-          if (isValidHttpUrl(password)) {
-            yrInternet.classList.toggle("invisible");
-            myInternet.classList.toggle("invisible");
-            addLink(defaultKey,password,yrTableID)
-                // .then((id) => loadYrInternet()); // TK Remove this when done with demo
-          }
-        });
-
-        document.getElementById("return").addEventListener("click", function () {
-            yrInternet.classList.toggle("invisible");
-            myInternet.classList.toggle("invisible");
-        });
-</script>
+		})
+	</script>
+</body>
 </html>
