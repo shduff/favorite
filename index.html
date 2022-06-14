@@ -7,16 +7,26 @@
 
 	<style>
 		body {
-			--border-radius: 5px;
-			--gap: 16px;
+			--gap: 8px;
+			--panel-height: calc(80vh - calc(5 * var(--gap)));
+			--panel-width: 15vw;
+            /*colors from the powderhouse site*/
+            --off-black: rgb(42 46 47); /* #2A2E2F */
+            --off-white: rgb(245 243 239); /* #F5F3EF */
+            --purple: rgb(178 131 200); /* #B283C8 */
+            --yellow: rgb(255 200 93); /* #FFC85D */
+            --green: rgb(50 131 90); /* #32835A */
+            --blue: rgb(128 210 236); /* #80D2EC */
+            --red: rgb(226 87 87); /* #E25757 */
+
             font-size: 17px;
             font-family: sans-serif;
+            color: var(--off-black);
+            background-color: var(--off-white);
+            max-height: 100vh;
 		}
 		body * {
 			box-sizing: border-box;
-		}
-		h1 {
-			text-align: center;
 		}
 		#panel-container {
 			display: flex;
@@ -25,40 +35,37 @@
 		}
 		.panel {
 			position: relative;
-			height: 80vh;
-			width: 15vw;
-			border-radius: var(--border-radius);
-			border: solid;
+			height: var(--panel-height);
+			width: var(--panel-width);
 			color: white;
 			text-decoration: none;
 			/*text-align: justify;*/
 		}
-		.panel:not(:last-child) {
+		/*.panel:not(:last-child) {
 			margin-right: var(--gap);
-		}
+		}*/
 		.panel img {
 			object-fit: cover;
 			left: 0;
 		    top: 0;
 		    width: 100%;
 		    height: 100%;
-		    filter: grayscale(100%) contrast(150%) opacity(75%);
-			border-radius: var(--border-radius);
+		    filter: grayscale(100%) contrast(150%) opacity(50%);
 		}
 		#aresnick {
-			background-color: purple;
+			background-color: var(--purple);
 		}
 		#bakhtiar {
-			background-color: blue;
+			background-color: var(--blue);
 		}
 		#lea {
-			background-color: green;
+			background-color: var(--green);
 		}
 		#shane {
-			background-color: yellow;
+			background-color: var(--yellow);
 		}
 		#shduff {
-			background-color: orange;
+			background-color: var(--red);
 		}
 		.info {
 			position: absolute;
@@ -70,7 +77,6 @@
 			overflow: hidden;
 			color: white;
 			transition: all 1s ease;		
-			border-radius: var(--border-radius);	
 		}
         .info h2 {
             font-size:2rem;
@@ -96,14 +102,40 @@
 			display: block;
 			background-color: rgba(0,0,0,0.75);
 			transition: all 1s ease;
-			border-radius: var(--border-radius);
+		}
+
+		body {
+			background-color: var(--off-black);
+		}
+		#panel-container {
+			display: grid;
+			grid-template-columns: 1fr repeat(5, var(--panel-width)) 1fr;
+			grid-template-rows: 1fr var(--panel-height) 1fr;
+			gap: var(--gap);
+		}
+		.panel, .spacer {
+			grid-row: 2;
+			background-color: var(--off-white);
+		}
+		#header {
+			text-align: center;
+			grid-row: 1;
+			grid-column: 1 / -1;
+			background-color: var(--off-white);
+			color: var(--off-black);
+		}
+		#footer {
+			grid-row: 3;
+			grid-column: 1 / -1;
+			background-color: var(--off-white);
+			color: var(--off-black);
 		}
 	</style>
 </head>
 <body>
-	<h1>Secret Contributors</h1>
 	<div id="panel-container">
-		
+		<div id="header"><h1>Secret Contributors</h1></div>
+		<div class="spacer"></div>
 		<div class="panel" id="aresnick">
 			<img src="ar.jpeg" />	
 			<div class="info">
@@ -165,6 +197,8 @@
 				</ul>
 			</div>
 		</div>
+		<div class="spacer"></div>
+		<div id="footer"></div>
 	</div>
 
 	<script>
