@@ -308,9 +308,7 @@
                 let url = previewObj.url ? previewObj.url : link;
                 let title = previewObj.title ? previewObj.title : "";
                 let description = previewObj.description ? previewObj.description : "";
-                let image = previewObj.image ? previewObj.image.url : (
-                    previewObj.icon ? previewObj.icon.url : getRandomLi(backupImgLinks)
-                    ) ;
+                let image = previewObj.image ? previewObj.image.url : getRandomLi(backupImgLinks);
                 let status = fieldShowStatus;
 
                 let previewData = {
