@@ -341,7 +341,7 @@
         }
 
         loadMyInternet();
-        loadYrInternet(); // TK uncomment this when done with demo
+        loadYrInternet();
 
         function isValidHttpUrl(string) {
           let url;
@@ -358,14 +358,24 @@
         let yrInternet = document.getElementById("yrInternet");
         let myInternet = document.getElementById("myInternet");
 
+        let alreadySubmitted = false;
         document.getElementById("passButt").addEventListener("click", function () {
-          password = prompt("What is the password? (Hint: Did you check that your URL is valid?)");
-          if (isValidHttpUrl(password)) {
-            yrInternet.classList.toggle("invisible");
-            myInternet.classList.toggle("invisible");
-            addLink(defaultKey,password,yrTableID)
-                // .then((id) => loadYrInternet()); // TK Remove this when done with demo
-          }
+
+            if (alreadySubmitted) {
+                yrInternet.classList.toggle("invisible");
+                myInternet.classList.toggle("invisible");
+            }
+
+            if (!alreadySubmitted) {
+                password = prompt("What is the password? (Hint: Did you check that your URL is valid?)");
+                
+                if (isValidHttpUrl(password)) {
+                    yrInternet.classList.toggle("invisible");
+                    myInternet.classList.toggle("invisible");
+                    addLink(defaultKey,password,yrTableID);
+                    alreadySubmitted = true;
+                }
+            }
         });
 
         document.getElementById("return").addEventListener("click", function () {
