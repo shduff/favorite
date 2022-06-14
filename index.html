@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<title></title>
 
 	<style>
@@ -73,10 +74,11 @@
 			left: 0;
 			padding: var(--gap);
 			height: 100%;
-			display: none;
+			/*display: none;*/
 			overflow: hidden;
 			color: white;
-			transition: all 1s ease;		
+			transition: all .5s ease;
+			opacity: 0;		
 		}
         .info h2 {
             font-size:2rem;
@@ -92,7 +94,7 @@
 			justify-content: start;
 		}
 		ul li:not(:last-child) {
-			padding-right: var(--gap);
+			padding-right: calc(var(--gap) * 2);
 		}
 		ul a {
 			text-decoration: none;
@@ -100,8 +102,9 @@
 		}
 		.visible {
 			display: block;
-			background-color: rgba(0,0,0,0.75);
-			transition: all 1s ease;
+			background-color: var(--off-black);
+			opacity: 0.75;
+			transition: all .5s ease;
 		}
 
 		body {
@@ -139,12 +142,13 @@
 		<div class="panel" id="aresnick">
 			<img src="ar.jpeg" />	
 			<div class="info">
-				<h2>Alec Resnick</h2>
+				<h2>Alec <br/>Resnick</h2>
 				<p>better known as Nardwuar, or Nardwuar the Human Serviette, is a Canadian interviewer and musician from Vancouver, British Columbia. He is the lead singer and keyboardist for <a href="https://en.wikipedia.org/wiki/The_Evaporators">The Evaporators.</a></p>
 				<ul>
-					<li><a href="http://twitter.com">🐦</a></li>
-					<li><a href="http://linkedin.com">🧑‍💼</a></li>
-					<li><a href="./shduff">🥚</a></li>
+					<li><a href="http://twitter.com" class="fa fa-twitter"></a></li>
+					<li><a href="http://linkedin.com" class="fa fa-linkedin"></a></li>
+					<li><a href="http://facebook.com" class="fa fa-facebook"></a></li>
+					<li><a href="./shduff" class="fa fa-lock"></a></li>
 				</ul>
 			</div>
 		</div>
@@ -152,48 +156,52 @@
 		<div class="panel" id="bakhtiar">
 			<img src="bm.jpeg" />
 			<div class="info">
-				<h2>Bakhtiar Mikhak</h2>
+				<h2>Bakhtiar <br/>Mikhak</h2>
 				<p>better known as Nardwuar, or Nardwuar the Human Serviette, is a Canadian interviewer and musician from Vancouver, British Columbia. He is the lead singer and keyboardist for <a href="https://en.wikipedia.org/wiki/The_Evaporators">The Evaporators.</a></p>
 				<ul>
-					<li><a href="http://twitter.com">🐦</a></li>
-					<li><a href="http://linkedin.com">🧑‍💼</a></li>
-					<li><a href="./shduff">🥚</a></li>
+					<li><a href="http://twitter.com" class="fa fa-twitter"></a></li>
+					<li><a href="http://linkedin.com" class="fa fa-linkedin"></a></li>
+					<li><a href="http://facebook.com" class="fa fa-facebook"></a></li>
+					<li><a href="./shduff" class="fa fa-lock"></a></li>
 				</ul>
 			</div>
 		</div>
 		<div class="panel" id="lea">
 			<img src="ld.jpeg" />
 			<div class="info">
-				<h2>Lea Degen</h2>
+				<h2>Lea <br/>Degen</h2>
 				<p>better known as Nardwuar, or Nardwuar the Human Serviette, is a Canadian interviewer and musician from Vancouver, British Columbia. He is the lead singer and keyboardist for The Evaporators.</p>
 				<ul>
-					<li><a href="http://twitter.com">🐦</a></li>
-					<li><a href="http://linkedin.com">🧑‍💼</a></li>
-					<li><a href="./shduff">🥚</a></li>
+					<li><a href="http://twitter.com" class="fa fa-twitter"></a></li>
+					<li><a href="http://linkedin.com" class="fa fa-linkedin"></a></li>
+					<li><a href="http://facebook.com" class="fa fa-facebook"></a></li>
+					<li><a href="./shduff" class="fa fa-lock"></a></li>
 				</ul>
 			</div>
 		</div>
 		<div class="panel" id="shane">
 			<img src="sd.jpeg" />
 			<div class="info">
-				<h2>Shane Dabor</h2>
+				<h2>Shane <br/>Dabor</h2>
 				<p>better known as Nardwuar, or Nardwuar the Human Serviette, is a Canadian interviewer and musician from Vancouver, British Columbia. He is the lead singer and keyboardist for <a href="https://en.wikipedia.org/wiki/The_Evaporators">The Evaporators.</a></p>
 				<ul>
-					<li><a href="http://twitter.com">🐦</a></li>
-					<li><a href="http://linkedin.com">🧑‍💼</a></li>
-					<li><a href="./shduff">🥚</a></li>
+					<li><a href="http://twitter.com" class="fa fa-twitter"></a></li>
+					<li><a href="http://linkedin.com" class="fa fa-linkedin"></a></li>
+					<li><a href="http://facebook.com" class="fa fa-facebook"></a></li>
+					<li><a href="./shduff" class="fa fa-lock"></a></li>
 				</ul>
 			</div>
 		</div>
 		<div class="panel" id="shduff">
 			<img src="smd.jpeg" />
 			<div class="info">
-				<h2>Shaunalynn Duffy</h2>
+				<h2>Shauna<wbr />lynn <br/>Duffy</h2>
 				<p>better known as Nardwuar, or Nardwuar the Human Serviette, is a Canadian interviewer and musician from Vancouver, British Columbia. He is the lead singer and keyboardist for <a href="https://en.wikipedia.org/wiki/The_Evaporators">The Evaporators.</a></p>
 				<ul>
-					<li><a href="http://twitter.com">🐦</a></li>
-					<li><a href="http://linkedin.com">🧑‍💼</a></li>
-					<li><a href="./shduff">🥚</a></li>
+					<li><a href="http://twitter.com" class="fa fa-twitter"></a></li>
+					<li><a href="http://linkedin.com" class="fa fa-linkedin"></a></li>
+					<li><a href="http://facebook.com" class="fa fa-facebook"></a></li>
+					<li><a href="./shduff" class="fa fa-lock"></a></li>
 				</ul>
 			</div>
 		</div>
