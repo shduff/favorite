@@ -221,6 +221,8 @@
                 let linkLi = document.createElement("li");
                 let linkA = document.createElement("a");
                 linkA.setAttribute("href",linkObj.Link);
+                linkA.setAttribute("target","_blank");
+                linkA.setAttribute("rel","noopener noreferrer");
                 linkA.setAttribute("class","myLink");
                 let imgLink = linkObj.Image ? linkObj.Image : getRandomLi(backupImgLinks);
                 let img = document.createElement("img");
