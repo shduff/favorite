@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+
+<script>
+	fetch("https://api.peekalink.io/", {
+		method: 'POST',
+		headers : {
+        	'Content-Type': 'application/json',
+			"X-API-Key": "c9172136-add6-43e8-aa8f-58974dcce0af",
+		},
+		body: JSON.stringify({link: "https://bit.ly/3frD2OP"})
+	})
+  	.then(response => response.json())
+  	.then(data => console.log(data));
+</script>
+</body>
+</html>

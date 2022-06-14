@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="airtable.browser.js"></script>
+    </head>
+    <body></body>
+
+    <script>
+        // Initialize the Airtable library and connect to the given base
+        let Airtable = require('airtable');
+        let base = new Airtable({apiKey: 'keyvBvUzoePx3d026'}).base('app95efV1ykSHnQrj');
+
+        let getField = function(field) {
+            // A function to read a particular field from the base
+
+            let results = []; // An array to store our results
+
+            return new Promise(function (resolve, reject) {
+                // Here, we turn the callback structure of the Airtable API into a Promise, following the guidance of https://stackoverflow.com/questions/22519784/how-do-i-convert-an-existing-callback-api-to-promises
+
+                // For an introduction to promises, check out https://medium.com/front-end-weekly/js-illustrated-promises-c87efb8d27a9 and https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises
+                // To read more about promises, check out https://mattgreer.dev/articles/promises-in-wicked-detail/ and https://medium.com/front-end-weekly/js-illustrated-promises-c87efb8d27a9
+                // For even more detail, check out https://exploringjs.com/impatient-js/ch_async-js.html
+
+                base('Table 1') // Grab the table
+                    .select() // Select all the records
+                    .eachPage(// For each page
+                        function page(records, fetchNextPage) {
+                            // Store the results of getting the field in the results array
+                            results = results.concat(records.map((r) => r.get(field)));
+                            // Fetch the next page, if any
+                            fetchNextPage();
+                        },
+                        function done(error) {
+                            // Once we're done, 
+                            if (error) {
+                                // Check if there's an error
+                                console.log('ERROR:', error);
+                                reject(error);
+                            } else {
+                                // Otherwise, resolve the promise with the results we get
+                                resolve(results);
+                            }
+                        }
+                    );
+            });
+        };
+
+        // Test out our function by adding content into the page
+        getField('Name').then((r) => {
+            let div = document.createElement('div');
+            div.innerText = r;
+            document.body.appendChild(div);
+        });
+    </script>
+</html>

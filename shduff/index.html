@@ -7,15 +7,28 @@
 
         <script src="airtable.browser.js"></script>
         <style>
-            
             body {
-                /*--header-height: 1.5rem;*/
-                /*padding-top: var(--header-height);*/
                 --gap: 16px;
+                --border-radius: 0px;
+                /*colors from the powderhouse site*/
+                --off-black: rgb(42 46 47); /* #2A2E2F */
+                --off-white: rgb(245 243 239); /* #F5F3EF */
+                --purple: rgb(178 131 200); /* #B283C8 */
+                --yellow: rgb(255 200 93); /* #FFC85D */
+                --green: rgb(50 131 90); /* #32835A */
+                --blue: rgb(128 210 236); /* #80D2EC */
+                --red: rgb(226 87 87); /* #E25757 */
+
                 margin-top: 0;
-                text-align: center;
                 font-family: "Be Vietnam Pro", sans-serif;
                 font-weight: 500;
+                background-color: var(--off-white);
+                color: var(--off-black);
+            }
+            .container {
+                max-width: 1440px;
+                padding: var(--gap);
+                margin: auto;
             }
             p.linkDescription {
                 padding: 0;
@@ -24,7 +37,7 @@
                 margin: 0 0 calc(var(--gap) / 2) 0;
             }
             a {
-                color: black;
+                color: var(--off-black);
                 text-decoration: none;
             }
             ul, li {
@@ -33,87 +46,90 @@
             }
             ul {
                 list-style-type: none;
-                --gap: 16px;
                 column-count: 3;
                 column-gap: var(--gap);
-                padding: var(--gap);
+                padding: var(--gap) 0;
             }
             ul li {
                 break-inside: avoid;
-                margin-bottom: calc(var(--gap) / 2);
+                margin-bottom: var(--gap);
+                border: solid 3px var(--off-black);
+                border-radius: var(--border-radius);
+                background-color: cream;
+                overflow: hidden;
             }
             ul li img {
-                /*position: relative;
-                z-index: 1;*/
                 display: block;
                 width: 100%;
-                border: solid 1px black;
-                border-radius: 3px;
-
+                border-bottom: solid 3px var(--off-black);
             }
             h3.linkTitle {
                 margin: 0;
-                padding-top: calc(var(--gap) / 2);
+                padding: calc(var(--gap) / 2);
             }
             p.linkDescription {
                 margin: 0;
-                padding-bottom: var(--gap);
+                padding: 0 calc(var(--gap) / 2) var(--gap) calc(var(--gap) / 2);
                 font-weight: 100;
             }
             p.pageDescription {
-                padding-bottom: var(--gap);
+                color: var(--off-white);
+                background-color: var(--off-black);
+                padding: var(--gap);
+                margin: var(--gap);
+                border: solid 3px var(--off-black);
+                font-size: 2rem;
                 font-weight: 100;
-                width: 50%;
                 margin: auto;
             }
             p.pageDescription a {
+                color: inherit;
                 font-weight: 500;
             }
-            /*#ourInternet {
-                position: fixed;
-                height: var(--header-height);
-                width: 100%;
-            }*/
             #myInternet {
                 top: calc(var(--header-height) * 3);
                 position: relative;
                 z-index: 1;
-                background-color: cream;
+                background-color: var(--off-white);
             }
             #yrInternet {
-                background-color: mintcream;
+                background-color: var(--off-white);
                 position: absolute;
                 z-index: 2;
                 top: 0;
-                width: 100vw;
                 min-height: 100%;
+            }
+            #passButt, #return {
+                text-decoration: underline;
             }
             .invisible {
                 display: none;
             }
+
+            @media (max-width: 1000px) { 
+                ul {
+                    column-count: 2;
+                }
+            }
+            @media (max-width: 500px) { 
+                ul {
+                    column-count: 1;
+                }
+            }
         </style>
     </head>
     <body>
-        <!-- <div id="ourInternet">
-            <h1>Our Favorite Internet</h1>
-        </div> -->
-        <div id="myInternet">
-            <h1>My Favorite Internet</h1>
-            <p class="pageDescription">
-                This is some of my favorite stuff on the Internet. Things that move me, make me belly laugh, and are just so much fun. Feel free to poke around—or to contribute one of your favorite pieces of the Internet. Your contribution is the password that will get you to my secret page.
-            </p> 
-            
-            <p class="pageDescription">
-                Think you know the password? <a href="#" id="passButt">Try it.</a>
-            </p>
-            <ul id="myLinks" class="favLinks">
-            </ul>
+        <div class="container">
+            <div id="myInternet">
+                <p class="pageDescription">
+                    <b>My Favorite Internet</b> is some of my favorite stuff on the Internet, ranging from things that move me to things that make me belly laugh. Feel free to poke around—or to contribute one of your favorite pieces of the Internet! Your contribution is the password that will get you to my secret page. <b>//</b> Think you know the password? <a href="#" id="passButt">Try it.</a>
+                </p>
+                <ul id="myLinks" class="favLinks">
+                </ul>
+            </div>
         </div>
-
-        <div id="yrInternet" class="invisible">
-            <h1>Yr Favorite Internet</h1>
-            <p class="pageDescription">This page is a collection of your favorite things from the Internet—or at least the favorite things of other folks who have visited this page. Take a look around, and don't worry if you don't see your link yet. I'm moderating submissions. It will show up soon!</p>
-            <p class="pageDescription">Return to my favorite Internet? <a href="#" id="return">Click here.</a></p>
+        <div class="container invisible" id="yrInternet">
+            <p class="pageDescription"><b>Yr Favorite Internet</b> is a collection of your favorite things from the Internet—by which I mean the royal you. These are the favorite Internet things of other folks who have visited this page. Take a look around, and don't worry if you don't see your link yet. I'm moderating submissions. It will show up soon! <b>//</b> Return to my favorite Internet? <a href="#" id="return">Click here.</a></p>
             <ul id="yrLinks" class="favLinks">
             </ul>
         </div>
@@ -155,6 +171,13 @@
             "https://wwwwwwwwwwwwwwwwwwwwww.bitnik.org/r/",
             "https://youtu.be/2hJzgLOSNrM",
         ];
+        let siteColors = {
+            "--purple": "--off-black",
+            "--yellow": "--off-black",
+            "--green": "--off-white",
+            "--blue": "--off-black",
+            "--red": "--off-white",
+        };
 
         // does not check for existing links, should be run on empty airtable and/or to add only additional content to currently populated airtable
         async function populateMyLinks(peekalinkApiKey=defaultKey) {
@@ -204,18 +227,31 @@
                 img.setAttribute("src",imgLink);
                 linkA.append(img);
 
-                if (linkObj.Title) {
-                    let linkTitle = document.createElement("h3");
-                    linkTitle.setAttribute("class","linkTitle");
-                    linkTitle.append(linkObj.Title);
-                    linkA.append(linkTitle);
-                };
-                if (linkObj.Description) {
-                    let linkDescription = document.createElement("p");
-                    linkDescription.setAttribute("class","linkDescription");
-                    linkDescription.append(linkObj.Description);
-                    linkA.append(linkDescription);
-                };
+                let liColor = getRandomLi(Object.keys(siteColors));
+
+                if (linkObj.Title || linkObj.Description) {
+                    let linkCaption = document.createElement("div");
+                    linkCaption.setAttribute("class","linkCaption");
+                    linkCaption.style.backgroundColor = "var(" + liColor + ")";
+                    linkCaption.style.color = "var(" + siteColors[liColor] + ")";
+
+                    if (linkObj.Title) {
+                        let linkTitle = document.createElement("h3");
+                        linkTitle.setAttribute("class","linkTitle");
+                        linkTitle.append(linkObj.Title);
+                        linkCaption.append(linkTitle);
+                    };
+
+                    if (linkObj.Description) {
+                        let linkDescription = document.createElement("p");
+                        linkDescription.setAttribute("class","linkDescription");
+                        linkDescription.append(linkObj.Description);
+                        linkCaption.append(linkDescription);
+                    };
+
+                    linkA.append(linkCaption);
+                }
+                
 
                 linkLi.append(linkA);
                 linkLis.push(linkLi);
