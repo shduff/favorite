@@ -112,7 +112,7 @@
 		#header {
 			display: flex;
 			justify-content: center;
-			align-items: center;
+			align-items: end;
 			grid-row: 1;
 			grid-column: 1 / -1;
 			background-color: var(--off-white);
@@ -258,27 +258,24 @@
 	</div>
 
 	<script>
-		let panels = Array.prototype.slice.call(document.getElementsByClassName("panel"));
+		let panels = document.getElementsByClassName("panel");
 		// console.log(panels);
 
-		panels.forEach((panel) => {
-			let infoDiv = Array.prototype.slice.call(panel.getElementsByClassName("info"))[0];
-			// console.log(infoDiv);
+		for (panel of panels) {
 
 			panel.addEventListener("mouseover", function() {
-				infoDiv.classList.toggle("visible");
+				this.querySelector(".info").classList.toggle("visible");
 				// console.log("mouseenter");
 			})
 			panel.addEventListener("mouseout", function() {
-				infoDiv.classList.toggle("visible");
+				this.querySelector(".info").classList.toggle("visible");
 				// console.log("mouseout");
 			})
             panel.addEventListener("click", function() {
-                infoDiv.classList.toggle("visible");
+                this.querySelector(".info").classList.toggle("visible");
                 // console.log("click");
             })
-
-		})
+		};
 	</script>
 </body>
 </html>
