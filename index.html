@@ -140,6 +140,7 @@
 			color: var(--off-black);
 		}
 		.fa-close {
+			padding: var(--gap) calc(var(--gap) * 1.2);
 			display: none;
 		}
 		@media (max-width: 550px) {
@@ -167,8 +168,6 @@
 			}
 			.panel {
 				grid-row: auto;
-				/*height: var(--panel-height);*/
-				/*width: var(--panel-width);*/
 			}
 			.panel .info {
 				position: fixed;
@@ -178,6 +177,7 @@
 				width: 100%;
 				font-size: 2rem;
 				padding: calc(4 * var(--gap));
+				display: none;
 			}
 			.panel .info h2 {
 				font-size: 3rem;
@@ -187,13 +187,14 @@
 				top: var(--gap);
 				right: var(--gap);
 				display: block;
-				z-index: 3;
 				text-decoration: none;
 			}
-			.visible {
+			.info.visible {
+				position: fixed;
 				display: block;
 				opacity: 0.95;
-				z-index: 1000;
+				z-index: 2;
+				animation: revert;
 			}
 		}
 	</style>
@@ -213,6 +214,7 @@
 					<li><a href="http://facebook.com" class="fa fa-facebook"></a></li>
 					<li><a href="./shduff/index.html" class="fa fa-lock"></a></li>
 				</ul>
+				<a href="" class="fa fa-close close"></a>
 			</div>
 		</div>
 		
@@ -227,6 +229,7 @@
 					<li><a href="http://facebook.com" class="fa fa-facebook"></a></li>
 					<li><a href="./shduff/index.html" class="fa fa-lock"></a></li>
 				</ul>
+				<a href="" class="fa fa-close close"></a>
 			</div>
 		</div>
 		<div class="panel" id="lea">
@@ -240,6 +243,7 @@
 					<li><a href="http://facebook.com" class="fa fa-facebook"></a></li>
 					<li><a href="./shduff/index.html" class="fa fa-lock"></a></li>
 				</ul>
+				<a href="" class="fa fa-close close"></a>
 			</div>
 		</div>
 		<div class="panel" id="shane">
@@ -253,6 +257,7 @@
 					<li><a href="http://facebook.com" class="fa fa-facebook"></a></li>
 					<li><a href="./shduff/index.html" class="fa fa-lock"></a></li>
 				</ul>
+				<a href="" class="fa fa-close close"></a>
 			</div>
 		</div>
 		<div class="panel" id="shduff">
@@ -275,24 +280,45 @@
 	</div>
 
 	<script>
-		let panels = document.getElementsByClassName("panel");
-		// console.log(panels);
+		let panels = Array.from(document.getElementsByClassName("panel"));
 
-		for (panel of panels) {
+		panels.forEach((panel) => {
+			let infoDiv = panel.querySelector(".info");
+			console.log(infoDiv);
 
 			panel.addEventListener("mouseover", function() {
-				this.querySelector(".info").classList.toggle("visible");
+				infoDiv.classList.toggle("visible");
 				// console.log("mouseenter");
 			})
 			panel.addEventListener("mouseout", function() {
-				this.querySelector(".info").classList.toggle("visible");
+				infoDiv.classList.toggle("visible");
 				// console.log("mouseout");
 			})
             panel.addEventListener("click", function() {
-                this.querySelector(".info").classList.toggle("visible");
-                // console.log("click");
+                infoDiv.classList.toggle("visible");
             })
-		};
+            panel.querySelector(".close").addEventListener("click", function() {
+            	infoDiv.classList.toggle("visible");
+            })
+
+		})
+
+
+		// for (panel of panels) {
+
+		// 	panel.addEventListener("mouseover", function() {
+		// 		this.querySelector(".info").classList.toggle("visible");
+		// 		// console.log("mouseenter");
+		// 	})
+		// 	panel.addEventListener("mouseout", function() {
+		// 		this.querySelector(".info").classList.toggle("visible");
+		// 		// console.log("mouseout");
+		// 	})
+  //           panel.addEventListener("click", function(event) {
+  //               this.querySelector(".info").classList.toggle("visible");
+  //               // console.log("click");
+  //           })
+		// };
 	</script>
 </body>
 </html>
