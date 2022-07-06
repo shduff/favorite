@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style>
+		#scribble {
+			width: calc(1748px / 5);
+			height: calc(2480px / 5);
+			background-color: #ccc;
+			background-size: cover;
+		}
+	</style>
+</head>
+<body>
+	<input id="secret" placeholder="Type your secret here!"/>
+	<button id="redraw">redraw!</button>
+	<div id="scribble"></div>
+	<button id="print">print this one!</button>
+
+	<script>
+		// let secret = "This is my secret!";
+		let wolframBaseURL = "https://www.wolframcloud.com/obj/0b17b8ae-f7c8-403b-94e5-98d1d6d53528";
+		let newImgURL = wolframBaseURL + "?secret="
+		let currentImgURL = "https://www.wolframcloud.com/obj/450190e1-2f0d-43b3-b039-9242692006db";
+		
+		function updateImgURL(imgFormat="SVG") {
+			let secret = document.getElementById("secret").value;
+			newImgURL += secret;
+
+			console.log("newImgURL is ", newImgURL);
+			return encodeURI(newImgURL);
+		}
+
+		function getProdigiURL(productID="greeting_cards_a5") {
+			let prodigiURL = "https://shop.prodigi.com/powderhouse/create/" + productID + "?image=" + currentImgURL + "|1748x2480"
+			return encodeURI(prodigiURL);
+		}
+
+		let scribbleDiv = document.getElementById("scribble");
+		let redrawButt = document.getElementById("redraw");
+		let printButt = document.getElementById("print");
+
+		redrawButt.addEventListener("click", function() {
+			console.log("redraw clicked");
+
+			let imgURL = updateImgURL();
+			console.log("currentImgURL is at ", currentImgURL);
+			scribbleDiv.style.backgroundImage = "url(" + imgURL + ")";
+		});
+
+		printButt.addEventListener("click", function() {
+			console.log("print clicked");
+			console.log("currentImgURL is still at " + currentImgURL);
+
+			let printURL = getProdigiURL();
+			console.log("printURL is " + printURL)
+			window.open(printURL, "_blank");
+		})
+
+	</script>
+
+</body>
+</html>
