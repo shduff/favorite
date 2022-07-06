@@ -16,6 +16,10 @@
 <body>
 	<input id="secret" placeholder="Type your secret here!"/>
 	<button id="redraw">redraw!</button>
+	<div class="">
+		<input id="1count" type="radio" name="count">1 count</input>
+		<input id="10count" type="radio" name="count">10 count</input>
+	</div>
 	<div id="scribble"></div>
 	<button id="print">print this one!</button>
 
@@ -33,14 +37,26 @@
 			return encodeURI(newImgURL);
 		}
 
-		function getProdigiURL(productID="greeting_cards_a5") {
+		function getProdigiURL() {
+			let productID
+			if (oneCount.checked) {
+				productID = "greeting_cards_a5";
+			} else {
+				productID = "greeting_cards_a5_10pack";
+			}
+
 			let prodigiURL = "https://shop.prodigi.com/powderhouse/create/" + productID + "?image=" + currentImgURL + "|1748x2480"
+
 			return encodeURI(prodigiURL);
 		}
 
 		let scribbleDiv = document.getElementById("scribble");
 		let redrawButt = document.getElementById("redraw");
 		let printButt = document.getElementById("print");
+		let oneCount = document.getElementById("1count");
+		let tenCount = document.getElementById("10count");
+
+		oneCount.checked = true;
 
 		redrawButt.addEventListener("click", function() {
 			console.log("redraw clicked");
