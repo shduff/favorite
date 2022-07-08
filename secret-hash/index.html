@@ -29,6 +29,9 @@
 		h1, h2 {
 			font-weight: 500;
 		}
+		img {
+			width: 100%;
+		}
 		#container {
 			display: flex;
 			padding: var(--gap);
@@ -41,6 +44,39 @@
 			margin-right: var(--gap);
 			flex: 3;
 			padding: var(--gap);
+		}
+		details {
+			padding-bottom: calc(var(--gap) / 2);
+		}
+		details > p {
+			padding-left: calc(var(--gap) * 2);
+		}
+		#use-cases {
+			display: flex;
+		}
+		#use-cases > * {
+			flex: 1;
+		}
+		summary {
+			cursor: pointer;
+			height: 200px;
+			background-color: white;
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center bottom -20px;
+			padding: calc(var(--gap) / 2) var(--gap);
+		}
+		summary:not(:last-child) {
+			margin-right: var(--gap);
+		}
+		summary#father {
+			background-image: url("father.svg");
+		}
+		summary#forgive {
+			background-image: url("forgive.svg");
+		}
+		summary#enby {
+			background-image: url("enby.svg");
 		}
 		dt {
 			font-weight: 500;
@@ -128,7 +164,69 @@
 <body>
 	<div id="container">
 		<main>
-			<h1>Secret Hash</h1>
+			<h1>Once you know a secret, <br /> it no longer is one. </h1>
+			<p>
+				This is the kind of paradox I loved thinking about as a kid, like how you can’t seek enlightenment directly; how you’ll never know whether the red *you* see is the same red I do; how some ideas are forgotten while others are one-way valves, offering perspectives which, once you see them, can’t be unseen. But what if there was a way to share a secret while still keeping it? What if there was a way to entrust someone with your deepest truths without actually being vulnerable with them?
+			</p>
+			<p>
+				<span class="highlight">Secret Hashes</span> offers you the opportunity to do just this. Using the one-way valve of cryptographic hash functions and the power of random walks to encode your secrets, you can share your sacred truths with anyone in the form of a sleek, graphical greeting card—vulnerability-free. 
+			</p>
+			<img src="./cards.png">
+			<p>
+				Here are some secrets I’d like to share using Secret Hashes in my own life.
+			</p>
+			<div id="use-cases">
+				<details>
+					<summary id="father">
+						You are my father.
+					</summary>
+					<p>
+						When I was 20 years old, I found out that the man I’d always called dad wasn’t my biological father. This didn’t change who I saw as my dad, though the secret was hard to process. My parents had gone out of their way to lie to me for two decades. It was a lot. 
+					</p>
+					<p>
+						 then, I’ve learnt my biodad’s name, and I’m not ashamed to share that I regularly google him. He has a whole life, a wife and kids, and he’s a marathon runner—which is strange, because I am too. I don’t want to reconnect with him as a dad, and I definitely don’t want to mess up his current life, but the marathon thing is weird, right?
+					</p>
+					<p>
+						I’d love to grab a drink with him sometime just to hear his voice, see where my Italian moustache and summer tans come from, find out if there is anything else we have in common. But I’m not quite ready yet. Instead, I’d like to send him an unsigned note of appreciation “from a neighbor,” with a scribble on the front that secretly shares, “You are my father.” 
+					</p>
+				</details>
+				<details>
+					<summary id="forgive">
+						I didn't forgive you then, but I forgive you now.
+					</summary>
+					<p>
+						I moved around as a kid before my family settled in New Hampshire. Every license plate read, “Live free or die!” I thought Fox News was real news. I didn’t feel comfortable being, or even exploring, who I was. I looked at the lives being lived around me—especially those of the adults close to me—and had a deep sense that growing up meant accepting a sad, repressive fate. I couldn’t imagine growing up to be happy and that left me unskilled and unambitious when it came to imagining my future.
+					</p>
+					<p>
+						This hopeless posture came from many places, and it was no one person’s fault, but there were specific people in my young life who went out of their way to make me feel I was not whole. They told me to take up less space. They told me I wasn’t trying hard enough. They told me, in no uncertain terms, how I needed to change to be loved by God, family, friends, and neighbors. 
+					</p>
+					<p>
+						At the time, I just absorbed what they said and tried to fit myself into the mold they presented. I tried—and failed—so hard. Shortly after leaving home, however, I saw the ways they had hurt me, and I felt angry. Angry that they would treat a young person that way. That they would clip the wings of a bird trying to fly. I felt angry that I’d spent so many years unhappy. It’s only recently that I’ve metabolized the truism, “Hurt people hurt people.”
+					</p>
+					<p>
+						I haven’t talked to many of these people in a long time, especially since my parents moved out of New Hampshire. I don’t have it in me to return to those relationships with real vulnerability, but the idea of reconnecting with these folks—sending a loving note, maybe hearing their voice and learning about their lives—feels welcome. We can’t change the past, but we can move forward. On the front of these cards, a scribble will say without saying, “I didn’t forgive you then, but I forgive you now.” 
+					</p>
+				</details>
+				<details>
+					<summary id="enby">
+						I'm nonbinary!
+					</summary>
+					<p>
+						Sometimes you don’t keep a thing secret, but it still is one. “Coming out” is only a thing because we assume a person is cis, straight, able-bodied, etc. unless we are explicitly told otherwise. We can even project these same assumptions onto ourselves.
+					</p>
+					<p>
+						When I realized I was bi, I didn’t feel the need to “come out.” Sexual orientation doesn’t come up much in my life, so I just dated people I loved, and my behavior spoke for itself—or it didn’t. For me, it didn’t matter much what people assumed about this aspect of my identity. 
+					</p>
+					<p>
+						Since I realized I was nonbinary, however, I’ve wanted to come out to the people in my life who have known me as a “woman.” As I’ve worked through that, I’ve  realized I’ll be in a perpetual state of coming out for the rest of my life, because we gender people automatically, placing them almost exclusively into the gender binary. I will never be able to “pass” as nonbinary.
+					</p>
+					<p>
+						This realization really chafes with my desire to avoid vulnerability (see above), so this is a large quantity card order. On each, the scribble reads, “I’m nonbinary!” and sending the card to a loved one offers me a real—if arbitrary—moment to let them know what the scribble says.
+					</p>
+				</details>
+			</div>
+
+			<h2>What's this all about?</h2>
 			<p>
 				For a long time, I’d say I made an applied study of performed vulnerability. By narrowing the scope of what I held sacred, I shrank the sphere of things I held secret. And, this meant I grew the sphere of things I was comfortable sharing. In fact, I grew it large enough that I’d often leave “intimate” exchanges unmoved, noticing a vulnerability asymmetry when conversational counterparts would express appreciation for the deep connection they felt we’d shared—an appreciation I couldn’t reciprocate.
 			</p>
@@ -143,12 +241,9 @@
 			<p>
 				By narrativizing and then distancing myself from the sharp edges of my own experiences, I was able to share them without really sharing myself.
 			</p>
-			<p>
-				<span class="highlight">Secret Hash</span> offers you the opportunity to do the same with secrets of your own, but without the emotional overhead. Using the one-way valve of cryptographic hash functions and the power of random walks to encode your secrets, you can share your sacred truths with anyone in the form of a sleek, graphical greeting card—vulnerability-free. Here are some of the uses I’ve found for Secret Hashes in my own life.
-			</p>
-			<h1>
+			<h2>
 				How does it work?
-			</h1>
+			</h2>
 			<p>
 				The whole thing is pretty simple. Your greeting card is generated in a four-part process: SECRET -> HASH -> SCRIBBLE -> PRINT + SHARE
 			</p>
