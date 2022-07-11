@@ -25,9 +25,13 @@
 			border-color: var(--off-black);
             color: var(--off-black);
             margin: 0;
+            box-sizing: border-box;
 		}
 		h1, h2 {
 			font-weight: 500;
+		}
+		li:not(:last-child) {
+			padding-bottom: calc(var(--gap) / 2);
 		}
 		img {
 			width: 100%;
@@ -45,14 +49,24 @@
 			flex: 3;
 			padding: var(--gap);
 		}
-		details {
+		/*details {
 			padding-bottom: calc(var(--gap) / 2);
+		}*/
+		.story-text {
+			display: none;
 		}
-		details > p {
-			padding-left: calc(var(--gap) * 2);
+		#story-div {
+			font-size: 1rem;
+			font-weight: 500;
+			margin: 0 var(--gap);
+			padding-bottom: var(--gap);
+		}
+		.use-case:not(:last-child) {
+			margin-right: var(--gap);
 		}
 		#use-cases {
 			display: flex;
+			margin-bottom: var(--gap);
 		}
 		#use-cases > * {
 			flex: 1;
@@ -65,9 +79,7 @@
 			background-repeat: no-repeat;
 			background-position: center bottom -20px;
 			padding: calc(var(--gap) / 2) var(--gap);
-		}
-		summary:not(:last-child) {
-			margin-right: var(--gap);
+			margin: 0;
 		}
 		summary#father {
 			background-image: url("father.svg");
@@ -159,6 +171,15 @@
 		.invisible {
 			display: none;
 		}
+		.open {
+			border: solid 1px var(--off-black);
+		}
+		.bold {
+			font-weight: 500;
+		}
+		.italic {
+			font-style: italic;
+		}
 	</style>
 </head>
 <body>
@@ -176,10 +197,64 @@
 				Here are some secrets I’d like to share using Secret Hashes in my own life.
 			</p>
 			<div id="use-cases">
-				<details>
+				<div class="use-case open">
 					<summary id="father">
 						You are my father.
 					</summary>
+					<div class="story-text father">
+						<p>
+							When I was 20 years old, I found out that the man I’d always called dad wasn’t my biological father. This didn’t change who I saw as my dad, though the secret was hard to process. My parents had gone out of their way to lie to me for two decades. It was a lot. 
+						</p>
+						<p>
+							 then, I’ve learnt my biodad’s name, and I’m not ashamed to share that I regularly google him. He has a whole life, a wife and kids, and he’s a marathon runner—which is strange, because I am too. I don’t want to reconnect with him as a dad, and I definitely don’t want to mess up his current life, but the marathon thing is weird, right?
+						</p>
+						<p>
+							I’d love to grab a drink with him sometime just to hear his voice, see where my Italian moustache and summer tans come from, find out if there is anything else we have in common. But I’m not quite ready yet. Instead, I’d like to send him an unsigned note of appreciation “from a neighbor,” with a scribble on the front that secretly shares, “You are my father.” 
+						</p>
+					</div>
+				</div>
+				<div class="use-case">
+					<summary id="forgive">
+						I didn't forgive you then, but I forgive you now.
+					</summary>
+					<div class="story-text forgive">
+						<p>
+							I moved around as a kid before my family settled in New Hampshire. Every license plate read, “Live free or die!” I thought Fox News was real news. I didn’t feel comfortable being, or even exploring, who I was. I looked at the lives being lived around me—especially those of the adults close to me—and had a deep sense that growing up meant accepting a sad, repressive fate. I couldn’t imagine growing up to be happy and that left me unskilled and unambitious when it came to imagining my future.
+						</p>
+						<p>
+							This hopeless posture came from many places, and it was no one person’s fault, but there were specific people in my young life who went out of their way to make me feel I was not whole. They told me to take up less space. They told me I wasn’t trying hard enough. They told me, in no uncertain terms, how I needed to change to be loved by God, family, friends, and neighbors. 
+						</p>
+						<p>
+							At the time, I just absorbed what they said and tried to fit myself into the mold they presented. I tried—and failed—so hard. Shortly after leaving home, however, I saw the ways they had hurt me, and I felt angry. Angry that they would treat a young person that way. That they would clip the wings of a bird trying to fly. I felt angry that I’d spent so many years unhappy. It’s only recently that I’ve metabolized the truism, “Hurt people hurt people.”
+						</p>
+						<p>
+							I haven’t talked to many of these people in a long time, especially since my parents moved out of New Hampshire. I don’t have it in me to return to those relationships with real vulnerability, but the idea of reconnecting with these folks—sending a loving note, maybe hearing their voice and learning about their lives—feels welcome. We can’t change the past, but we can move forward. On the front of these cards, a scribble will say without saying, “I didn’t forgive you then, but I forgive you now.” 
+						</p>
+					</div>
+				</div>
+				<div class="use-case">
+					<summary id="enby">
+						I'm nonbinary!
+					</summary>
+					<div class="story-text enby">
+						<p>
+							Sometimes you don’t keep a thing secret, but it still is one. “Coming out” is only a thing because we assume a person is cis, straight, able-bodied, etc. unless we are explicitly told otherwise. We can even project these same assumptions onto ourselves.
+						</p>
+						<p>
+							When I realized I was bi, I didn’t feel the need to “come out.” Sexual orientation doesn’t come up much in my life, so I just dated people I loved, and my behavior spoke for itself—or it didn’t. For me, it didn’t matter much what people assumed about this aspect of my identity. 
+						</p>
+						<p>
+							Since I realized I was nonbinary, however, I’ve wanted to come out to the people in my life who have known me as a “woman.” As I’ve worked through that, I’ve  realized I’ll be in a perpetual state of coming out for the rest of my life, because we gender people automatically, placing them almost exclusively into the gender binary. I will never be able to “pass” as nonbinary.
+						</p>
+						<p>
+							This realization really chafes with my desire to avoid vulnerability (see above), so this is a large quantity card order. On each, the scribble reads, “I’m nonbinary!” and sending the card to a loved one offers me a real—if arbitrary—moment to let them know what the scribble says.
+						</p>
+					</div>
+				</div>
+			</div>
+			<div id="story-div">
+				<!-- This should eventually be empty to start with "father" content loaded programmatically. Hard coding for now. -->
+				<div class="father">
 					<p>
 						When I was 20 years old, I found out that the man I’d always called dad wasn’t my biological father. This didn’t change who I saw as my dad, though the secret was hard to process. My parents had gone out of their way to lie to me for two decades. It was a lot. 
 					</p>
@@ -189,41 +264,7 @@
 					<p>
 						I’d love to grab a drink with him sometime just to hear his voice, see where my Italian moustache and summer tans come from, find out if there is anything else we have in common. But I’m not quite ready yet. Instead, I’d like to send him an unsigned note of appreciation “from a neighbor,” with a scribble on the front that secretly shares, “You are my father.” 
 					</p>
-				</details>
-				<details>
-					<summary id="forgive">
-						I didn't forgive you then, but I forgive you now.
-					</summary>
-					<p>
-						I moved around as a kid before my family settled in New Hampshire. Every license plate read, “Live free or die!” I thought Fox News was real news. I didn’t feel comfortable being, or even exploring, who I was. I looked at the lives being lived around me—especially those of the adults close to me—and had a deep sense that growing up meant accepting a sad, repressive fate. I couldn’t imagine growing up to be happy and that left me unskilled and unambitious when it came to imagining my future.
-					</p>
-					<p>
-						This hopeless posture came from many places, and it was no one person’s fault, but there were specific people in my young life who went out of their way to make me feel I was not whole. They told me to take up less space. They told me I wasn’t trying hard enough. They told me, in no uncertain terms, how I needed to change to be loved by God, family, friends, and neighbors. 
-					</p>
-					<p>
-						At the time, I just absorbed what they said and tried to fit myself into the mold they presented. I tried—and failed—so hard. Shortly after leaving home, however, I saw the ways they had hurt me, and I felt angry. Angry that they would treat a young person that way. That they would clip the wings of a bird trying to fly. I felt angry that I’d spent so many years unhappy. It’s only recently that I’ve metabolized the truism, “Hurt people hurt people.”
-					</p>
-					<p>
-						I haven’t talked to many of these people in a long time, especially since my parents moved out of New Hampshire. I don’t have it in me to return to those relationships with real vulnerability, but the idea of reconnecting with these folks—sending a loving note, maybe hearing their voice and learning about their lives—feels welcome. We can’t change the past, but we can move forward. On the front of these cards, a scribble will say without saying, “I didn’t forgive you then, but I forgive you now.” 
-					</p>
-				</details>
-				<details>
-					<summary id="enby">
-						I'm nonbinary!
-					</summary>
-					<p>
-						Sometimes you don’t keep a thing secret, but it still is one. “Coming out” is only a thing because we assume a person is cis, straight, able-bodied, etc. unless we are explicitly told otherwise. We can even project these same assumptions onto ourselves.
-					</p>
-					<p>
-						When I realized I was bi, I didn’t feel the need to “come out.” Sexual orientation doesn’t come up much in my life, so I just dated people I loved, and my behavior spoke for itself—or it didn’t. For me, it didn’t matter much what people assumed about this aspect of my identity. 
-					</p>
-					<p>
-						Since I realized I was nonbinary, however, I’ve wanted to come out to the people in my life who have known me as a “woman.” As I’ve worked through that, I’ve  realized I’ll be in a perpetual state of coming out for the rest of my life, because we gender people automatically, placing them almost exclusively into the gender binary. I will never be able to “pass” as nonbinary.
-					</p>
-					<p>
-						This realization really chafes with my desire to avoid vulnerability (see above), so this is a large quantity card order. On each, the scribble reads, “I’m nonbinary!” and sending the card to a loved one offers me a real—if arbitrary—moment to let them know what the scribble says.
-					</p>
-				</details>
+				</div>
 			</div>
 
 			<h2>What's this all about?</h2>
@@ -239,8 +280,7 @@
 				<dd>It was a dark time. You sitting down?</dd>
  			</dl>
 			<p>
-				By narrativizing and then distancing myself from the sharp edges of my own experiences, I was able to share them without really sharing myself.
-			</p>
+				By narrativizing and then distancing myself from the sharp edges of my own experiences, I was able to share them without really sharing myself. Rather than continuing this practice entirely on the inside and on my own, I’ve decided to externalize and share it in the form of Secret Hashes. I invite you to tell your own secrets through these playful scribbles, sending them to friends and neighbors, family and strangers. And, if you’re interested in the insides of the scribble generating tool, that’s no secret either!			</p>
 			<h2>
 				How does it work?
 			</h2>
@@ -259,15 +299,21 @@
 			<h2>
 				Then, your secret is translated into a HASH.
 			</h2>
-			<p>
-				A hash is the name for a string of characters output by a hash function, and a hash function is a computer program we use on the text of your original secret to encode it, unrecognizably. In the real world, hashes are used for verification purposes. For example, when receiving a file, you can compare the hash you get from running the file through a hash function to the hash the sender got by doing the same. If they match, you know that the file was unchanged between when it was sent and received. If the hashes are different, something was tampered with. Email, digital signatures, and many version control services rely on this technology. Secret Hash does too.
-			</p>
-			<p>
-				Without going too deep, a hash function breaks the text of your secret into individual characters, groups those characters into chunks, and then loops through each chunk: generating an intermediate hash, combining that intermediate hash with the next chunk to generate a new intermediate hash, combining that new intermediate hash with the next chunk to generate a newer intermediate hash, and on and on until the function has looped through all the chunks. The last “intermediate” hash becomes the final hash.
-			</p>
-			<p>
-				In this way, hash functions are able to translate text of arbitrary length (whether a single sentence secret or The Collected Poems of Langston Hughes) into a hash of fixed length (in the case of this project, a string of TK numbers), ensuring that the same input text will always result in the same hash, because the same recipe is applied every time. The complexity of this recipe also ensures that while the original text is uniquely encoded in its hash, the hash is a one-way valve. It cannot be reverse engineered, meaning the original text cannot be recovered from the hash, meaning your secret cannot be decoded from your hash—or from the scribble we draw with it. 
-			</p>
+				<p>
+					In the real world, hashes are used for verification purposes. For example, when receiving a file, you can compare the hash you get by running the file through a hash function to the hash the sender got by doing the same. If they match, you know that the file was unchanged between when it was sent and received. If the hashes are different, it was tampered with. Email, digital signatures, and many version control services rely on this technology. Secret Hashes does too.
+				</p>
+				<p>
+					A hash is the name for a string of characters output by a hash function. A hash function is the tool we use on the text of your original secret to encode it, unrecognizably. The exact recipes used to generate hashes are complex, but they have a few important characteristics.
+				</p>
+				<ol>
+					<li><span class="bold">They are deterministic.</span><br />The same input text will always result in the same hash.</li>
+					<li><span class="bold">They are pre-image resistant.</span><br />The original text cannot be recovered from the hash.</li>
+					<li><span class="bold">They are collision resistant.</span><br />Different inputs will not result in the same hash—or, at least, they are vanishingly unlikely to do so.</li>
+					<li><span class="bold">They use the avalanche effect.</span><br />Even a tiny change in the original text will generate a completely different hash due to the “rolling snowball”-like structure of the hash function.</li>
+				</ol>
+				<p>
+					In this way, hash functions are able to translate an infinite number of possible inputs (whether a single sentence secret or The Collected Poems of Langston Hughes) into one of many, many possible fixed length hashes (in the case of this project, a string of 154 numbers), one which is always the same and cannot be reverse engineered, meaning your secret cannot be decoded from your hash or from the scribble we draw with it.
+				</p>
 			<h2>
 				Next, your hash is encoded in a SCRIBBLE. 
 			</h2>
@@ -295,11 +341,7 @@
 				Now, you’re ready to PRINT your scribble on a greeting card and SHARE YOUR SECRET with the world. 
 			</h2>
 			<p>
-				Make sure that you like the scribble you see above and that you’ve checked the “I like this scribble” box above. The scribble you see is the one that will be printed onto your cards!
-			</p>
-			<img src="#TK" />
-			<p>
-				This is the the style of the Secret Hash cards. If you like what you see, you can purchase your own by filling out the prompts below. Please expect TK for preparing and shipping your order.
+				The displayed scribble is the one that will be printed on your greeting cards. If you like what you see, choose whether you want a single card (1 count) or a pack of 10 (10 count), and then click the TK button to print and purchase. Once you follow that link, you’ll be able to simply add the cards to your cart and purchase them—or you can further design your card: placing and resizing your secret scribble and adding additional text and images. Happy secrets!		
 			</p>
 		</main>
 
@@ -326,7 +368,32 @@
 	</div>
 		
 	<script>
-		// let secret = "This is my secret!";
+		// Sample story code
+		let storyDiv = document.getElementById("story-div");
+		let useCases = Array.from(document.querySelectorAll(".use-case"));
+
+		useCases.map((uc) => uc.addEventListener("click", function(e) {
+			if (uc.classList.contains("open")) {
+				storyDiv.innerHTML = "";
+				uc.classList.toggle("open");
+			} else {
+				let anyOtherUCsAreOpen = useCases.map(uc => uc.classList.contains("open")).some(element => element === true);
+				if (anyOtherUCsAreOpen) {
+					useCases.map(uc => {
+					if (uc.classList.contains("open")) {
+						uc.classList.toggle("open")
+					}
+				})}
+
+				let useCaseDiv = e.srcElement.nextElementSibling.cloneNode(true);
+				storyDiv.innerHTML = "";
+				storyDiv.append(useCaseDiv);
+				storyDiv.firstChild.classList.remove("story-text");
+				uc.classList.toggle("open");
+			}
+		}));
+
+		// Scribble generation code
 		let wolframBaseURL = "https://www.wolframcloud.com/obj/0b17b8ae-f7c8-403b-94e5-98d1d6d53528";
 		let newImgURL = wolframBaseURL + "?secret="
 		let currentImgURL = "https://www.wolframcloud.com/obj/450190e1-2f0d-43b3-b039-9242692006db";
