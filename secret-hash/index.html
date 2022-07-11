@@ -441,11 +441,12 @@
 				noSecret.classList.remove("invisible");
 			}
 
-			if (secretInput != "" && drawButtText.innerText == "draw!") {
+			if (secretInput != "" && drawButtText.innerText == "draw") {
 				if (!noScribble.classList.contains("invisible")) {
 					noScribble.classList.add("invisible")
 				}
-				drawButtText.innerText = "redraw"
+				drawButtText.innerText = "redraw";
+				console.log("redraw!")
 			}
 
 			if (secretInput) {
